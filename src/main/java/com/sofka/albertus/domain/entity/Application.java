@@ -4,17 +4,17 @@ import co.com.sofka.domain.generic.Entity;
 import com.sofka.albertus.domain.values.ApplicationId;
 import com.sofka.albertus.domain.values.Description;
 import com.sofka.albertus.domain.values.IsActive;
-import com.sofka.albertus.domain.values.NameApplication;
+import com.sofka.albertus.domain.values.Name;
 
 public class Application extends Entity<ApplicationId> {
 
-    private NameApplication nameApplication;
+    private Name nameApplication;
     private Description description;
     private IsActive isActive;
 
 
     public Application(ApplicationId entityId,
-                       NameApplication nameApplication,
+                       Name nameApplication,
                        Description description,
                        IsActive isActive) {
 
@@ -24,11 +24,11 @@ public class Application extends Entity<ApplicationId> {
         this.isActive = isActive;
     }
 
-    public NameApplication getNameApplication() {
+    public Name getNameApplication() {
         return nameApplication;
     }
 
-    public void setNameApplication(NameApplication nameApplication) {
+    public void setNameApplication(Name nameApplication) {
         this.nameApplication = nameApplication;
     }
 
