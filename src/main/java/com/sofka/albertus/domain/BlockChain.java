@@ -54,5 +54,7 @@ public class BlockChain  extends AggregateEvent<BlockChainId> {
         appendChange(new BlockCreated(applicationId, data, hash, timeStamp, nonce, hasOverCharge, previousHash)).apply();
     }
 
-
+    public List<Block> getBlocks() {
+        return blocks;
+    }
 }
