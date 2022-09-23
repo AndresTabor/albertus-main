@@ -1,4 +1,4 @@
-package com.sofka.albertus.domain.commands;
+package com.sofka.albertus.business.usecases.gateways.commands;
 
 import co.com.sofka.domain.generic.Command;
 
