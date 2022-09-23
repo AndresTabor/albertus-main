@@ -59,7 +59,7 @@ class CreateBlockUseCaseTest {
 
         ApplicationRegistered applicationRegistered = new ApplicationRegistered(
                 "aplicacionTest",
-                "descripcion de aplicacion", true);
+                "descripcion de aplicacion", true, "U123");
 
         GenesisBlockCreated genesisBlockCreatedEvent = new GenesisBlockCreated(
                 "Genesis Block"
