@@ -8,10 +8,17 @@ public class ApplicationRegistered extends DomainEvent {
 
     private String description;
 
-    public ApplicationRegistered(String nameApplication, String description) {
+    private Boolean isActive;
+
+    public ApplicationRegistered(String nameApplication, String description, Boolean isActive) {
         super("sofka.albertus.domain.ApplicationRegistered");
         this.nameApplication = nameApplication;
         this.description = description;
+        this.isActive = isActive;
+    }
+
+    public Boolean getActive() {
+        return isActive;
     }
 
     public String getNameApplication() {

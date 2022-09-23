@@ -23,8 +23,6 @@ import reactor.test.StepVerifier;
 import java.time.Instant;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @ExtendWith(MockitoExtension.class)
 class CreateBlockUseCaseTest {
 
@@ -61,7 +59,7 @@ class CreateBlockUseCaseTest {
 
         ApplicationRegistered applicationRegistered = new ApplicationRegistered(
                 "aplicacionTest",
-                "descripcion de aplicacion");
+                "descripcion de aplicacion", true);
 
         GenesisBlockCreated genesisBlockCreatedEvent = new GenesisBlockCreated(
                 "Genesis Block"
