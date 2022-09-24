@@ -39,7 +39,7 @@ class CreateBlockUseCaseTest {
     @DisplayName("createBlockUseCaseTest. Should save both events and publish to Rabbit")
     void createBlockUseCaseTest(){
         //arrange
-        CreateBlock createBlockCommand = new CreateBlock("098098098","aplicatioID","rabit");
+        CreateBlock createBlockCommand = new CreateBlock("aplicatioID","rabit");
 
         String hash = "ajdkjandaksjdnakj";
         Instant timeStamp = Instant.now();
