@@ -8,7 +8,7 @@ import java.util.Map;
 public class BlockCreated extends DomainEvent {
 
     private String applicationID;
-    private Map<String, String> data;
+    private Map<String, Object> data;
 
     private String hash;
     private Instant timeStamp;
@@ -16,7 +16,7 @@ public class BlockCreated extends DomainEvent {
     private Boolean hasOverCharge;
     private String previousHash;
 
-    public BlockCreated(String applicationID, Map<String, String>  data, String hash, Instant timeStamp, Integer nonce, Boolean hasOverCharge, String previousHash) {
+    public BlockCreated(String applicationID, Map<String, Object>  data, String hash, Instant timeStamp, Integer nonce, Boolean hasOverCharge, String previousHash) {
         super("sofka.albertus.domain.BlockCreated");
         this.applicationID = applicationID;
         this.data = data;
@@ -31,7 +31,7 @@ public class BlockCreated extends DomainEvent {
         return applicationID;
     }
 
-    public Map<String, String>  getData() {
+    public Map<String, Object>  getData() {
         return data;
     }
 

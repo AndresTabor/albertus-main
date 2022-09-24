@@ -57,7 +57,7 @@ public class CreateBlockUseCase {
 
                         String previousHash = blockChain.getBlocks().get(blockChain.getBlocks().size()-1).value().hash();
                         String nonce = String.valueOf((int) (Math.random() * 10000));
-                        Map<String, String> data = command.getData();
+                        Map<String, Object> data = command.getData();
 
                         Instant instant = Instant.now();
                         String timeStamp = String.valueOf(instant);

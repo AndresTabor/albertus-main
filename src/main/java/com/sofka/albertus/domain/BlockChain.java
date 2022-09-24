@@ -52,7 +52,7 @@ public class BlockChain  extends AggregateEvent<BlockChainId> {
         appendChange(new GenesisBlockCreated(data)).apply();
     }
 
-    public void CreateBlock(Map<String, String> data, String applicationId, String hash, Instant timeStamp, Integer nonce, Boolean hasOverCharge, String previousHash){
+    public void CreateBlock(Map<String, Object> data, String applicationId, String hash, Instant timeStamp, Integer nonce, Boolean hasOverCharge, String previousHash){
         Objects.requireNonNull(data);
         Objects.requireNonNull(applicationId);
         appendChange(new BlockCreated(applicationId, data, hash, timeStamp, nonce, hasOverCharge, previousHash)).apply();
