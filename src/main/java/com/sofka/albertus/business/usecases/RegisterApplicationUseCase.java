@@ -33,7 +33,7 @@ public class RegisterApplicationUseCase {
                             command.getApplicationId(),
                             command.getNameApplication(),
                             command.getDescription(),
-                            command.getActive(),
+                            true,
                             command.getUserId());
                     return blockChain.getUncommittedChanges();
 
