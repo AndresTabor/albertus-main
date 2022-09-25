@@ -75,7 +75,7 @@ public class BlockChainChange extends EventChange {
                     (ApplicationId.of(event.getApplicationId())),
                     new Name(event.getNameApplication()),
                     new Description(event.getDescription()),
-                    event.getActive(),
+                    new IsActive(event.getActive()),
                     new UserId(event.getUserId())
             ));
         });

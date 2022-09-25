@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-
 @Slf4j
 @Component
 public class DeleteApplicationUseCase {
@@ -29,11 +28,11 @@ public class DeleteApplicationUseCase {
         .collectList()
         .flatMapIterable(events -> {
           BlockChain blockChain = BlockChain.from(BlockChainId.of("1"), events);
-          blockChain.deleteApplication(command.getApplicationID(), command.getIsActive());
+          blockChain.deleteApplication(command.getApplicationID());
           return blockChain.getUncommittedChanges();
         }).map(event ->{
           bus.publish(event);
           return event;
-        }).flatMap(repository::saveEvent));
+        }).flatMap(event -> repository.saveEvent(event)));
   }
 }

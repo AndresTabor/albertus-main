@@ -7,13 +7,13 @@ public class Application extends Entity<ApplicationId> {
 
     private Name nameApplication;
     private Description description;
-    private Boolean isActive;
+    private IsActive isActive;
 
     private UserId userId;
     public Application(ApplicationId entityId,
                        Name nameApplication,
                        Description description,
-                       Boolean isActive, UserId userId) {
+                       IsActive isActive, UserId userId) {
 
         super(entityId);
         this.nameApplication = nameApplication;
@@ -38,12 +38,12 @@ public class Application extends Entity<ApplicationId> {
         this.description = description;
     }
 
-    public Boolean getActive() {
+    public IsActive getIsActive() {
         return isActive;
     }
 
-    public void setActive(Boolean active) {
-        isActive = active;
+    public void setIsActive(IsActive isActive) {
+        this.isActive = isActive;
     }
 
     public UserId getUserId() {
@@ -60,7 +60,7 @@ public class Application extends Entity<ApplicationId> {
     }
 
     public  void deleteApplication(){
-        this.isActive = false;
+        this.isActive = new IsActive(false);
     }
 
 }
