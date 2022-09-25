@@ -9,6 +9,7 @@ import com.sofka.albertus.domain.entity.User;
 import com.sofka.albertus.domain.values.ApplicationId;
 import com.sofka.albertus.domain.values.Block;
 import com.sofka.albertus.domain.values.BlockChainId;
+import com.sofka.albertus.domain.values.IsActive;
 import com.sofka.albertus.domain.values.Name;
 
 import java.time.Instant;
@@ -80,8 +81,8 @@ public class BlockChain  extends AggregateEvent<BlockChainId> {
         return applications.stream().filter((application -> application.identity().equals(applicationId))).findFirst();
     }
 
-    public void deleteApplication(String applicationId){
-        appendChange(new ApplicationDeleted(applicationId)).apply();
+    public void deleteApplication(String applicationId, IsActive isActive){
+        appendChange(new ApplicationDeleted(applicationId, isActive)).apply();
     }
 
 }

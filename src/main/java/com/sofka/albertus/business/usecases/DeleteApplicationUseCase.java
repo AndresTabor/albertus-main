@@ -24,11 +24,11 @@ public class DeleteApplicationUseCase {
         .collectList()
         .flatMapIterable(events -> {
           BlockChain blockChain = BlockChain.from(BlockChainId.of("1"), events);
-          blockChain.deleteApplication(command.getApplicationID());
+          blockChain.deleteApplication(command.getApplicationID(),command.getIsActive() );
           return blockChain.getUncommittedChanges();
         }).map(event ->{
           bus.publish(event);
           return event;
-        }).flatMap(event -> repository.saveEvent(event)));
+        }).flatMap(repository::saveEvent));
   }
 }
