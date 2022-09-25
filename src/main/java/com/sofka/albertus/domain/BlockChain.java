@@ -81,8 +81,9 @@ public class BlockChain  extends AggregateEvent<BlockChainId> {
         return applications.stream().filter((application -> application.identity().equals(applicationId))).findFirst();
     }
 
-    public void deleteApplication(String applicationId, IsActive isActive){
-        appendChange(new ApplicationDeleted(applicationId, isActive)).apply();
+    public void deleteApplication(String applicationId, Boolean isActive){
+
+        appendChange(new ApplicationDeleted(applicationId,isActive)).apply();
     }
 
 }

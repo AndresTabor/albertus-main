@@ -7,9 +7,9 @@ public class DeleteApplication extends Command {
 
 
     private String applicationID;
-    private IsActive isActive;
+    private Boolean isActive;
 
-    public DeleteApplication(String applicationID, IsActive isActive) {
+    public DeleteApplication(String applicationID, Boolean isActive) {
         this.applicationID = applicationID;
         this.isActive = isActive;
     }
@@ -21,7 +21,7 @@ public class DeleteApplication extends Command {
         return applicationID;
     }
 
-    public IsActive getIsActive() {
+    public Boolean getIsActive() {
         return isActive;
     }
 }

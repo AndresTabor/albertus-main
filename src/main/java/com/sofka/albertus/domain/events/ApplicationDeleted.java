@@ -6,9 +6,9 @@ import com.sofka.albertus.domain.values.IsActive;
 public class ApplicationDeleted extends DomainEvent {
 
     private String applicationID;
-    private IsActive isActive;
+    private Boolean isActive;
 
-    public ApplicationDeleted(String applicationID, IsActive isActive) {
+    public ApplicationDeleted(String applicationID, Boolean isActive) {
         super("sofka.albertus.domain.ApplicationDeleted");
         this.applicationID = applicationID;
         this.isActive = isActive;
@@ -20,7 +20,7 @@ public class ApplicationDeleted extends DomainEvent {
         return applicationID;
     }
 
-    public IsActive getIsActive() {
+    public Boolean getIsActive() {
         return isActive;
     }
 }
