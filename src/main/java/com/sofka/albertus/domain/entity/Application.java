@@ -8,18 +8,27 @@ public class Application extends Entity<ApplicationId> {
     private Name nameApplication;
     private Description description;
     private IsActive isActive;
-
     private UserId userId;
+
+    private CreationDate creationDate;
+
+    private ModificationDate modificationDate;
+
     public Application(ApplicationId entityId,
                        Name nameApplication,
                        Description description,
-                       IsActive isActive, UserId userId) {
+                       IsActive isActive,
+                       UserId userId,
+                       CreationDate creationDate,
+                       ModificationDate modificationDate) {
 
         super(entityId);
         this.nameApplication = nameApplication;
         this.description = description;
         this.isActive = isActive;
         this.userId = userId;
+        this.creationDate = creationDate;
+        this.modificationDate = modificationDate;
     }
 
     public Name getNameApplication() {
@@ -52,6 +61,22 @@ public class Application extends Entity<ApplicationId> {
 
     public void setUserId(UserId userId) {
         this.userId = userId;
+    }
+
+    public CreationDate getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(CreationDate creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public ModificationDate getModificationDate() {
+        return modificationDate;
+    }
+
+    public void setModificationDate(ModificationDate modificationDate) {
+        this.modificationDate = modificationDate;
     }
 
     public void updateApplication(String nameApplication, String descriptionApplication){
