@@ -3,6 +3,8 @@ package com.sofka.albertus.domain.entity;
 import co.com.sofka.domain.generic.Entity;
 import com.sofka.albertus.domain.values.*;
 
+import java.time.Instant;
+
 public class Application extends Entity<ApplicationId> {
 
     private Name nameApplication;
@@ -82,6 +84,7 @@ public class Application extends Entity<ApplicationId> {
     public void updateApplication(String nameApplication, String descriptionApplication){
         this.nameApplication = new Name(nameApplication);
         this.description = new Description(descriptionApplication);
+        this.modificationDate = new ModificationDate(Instant.now());
     }
 
     public  void deleteApplication(){
