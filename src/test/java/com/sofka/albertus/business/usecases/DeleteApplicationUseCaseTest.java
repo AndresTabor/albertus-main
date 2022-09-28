@@ -3,7 +3,7 @@ package com.sofka.albertus.business.usecases;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.sofka.albertus.business.usecases.gateways.DomainEventRepository;
 import com.sofka.albertus.business.usecases.gateways.EventBus;
-import com.sofka.albertus.business.usecases.gateways.commands.DeleteApplication;
+import com.sofka.albertus.domain.commands.DeleteApplication;
 import com.sofka.albertus.domain.events.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,8 +19,6 @@ import reactor.test.StepVerifier;
 
 import java.time.Instant;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class DeleteApplicationUseCaseTest {

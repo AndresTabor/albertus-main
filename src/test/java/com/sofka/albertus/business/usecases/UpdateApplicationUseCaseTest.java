@@ -1,13 +1,9 @@
 package com.sofka.albertus.business.usecases;
 
 import co.com.sofka.domain.generic.DomainEvent;
-import com.sofka.albertus.application.helpers.BlockHashResponse;
 import com.sofka.albertus.business.usecases.gateways.DomainEventRepository;
 import com.sofka.albertus.business.usecases.gateways.EventBus;
-import com.sofka.albertus.business.usecases.gateways.commands.CreateBlock;
-import com.sofka.albertus.business.usecases.gateways.commands.CreateBlockChain;
-import com.sofka.albertus.business.usecases.gateways.commands.RegisterApplication;
-import com.sofka.albertus.business.usecases.gateways.commands.UpdateApplication;
+import com.sofka.albertus.domain.commands.UpdateApplication;
 import com.sofka.albertus.domain.events.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,10 +18,7 @@ import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 import java.time.Instant;
-import java.util.HashMap;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class UpdateApplicationUseCaseTest {

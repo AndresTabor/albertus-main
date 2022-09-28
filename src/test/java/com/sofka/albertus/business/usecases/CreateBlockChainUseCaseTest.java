@@ -3,7 +3,7 @@ package com.sofka.albertus.business.usecases;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.sofka.albertus.business.usecases.gateways.DomainEventRepository;
 import com.sofka.albertus.business.usecases.gateways.EventBus;
-import com.sofka.albertus.business.usecases.gateways.commands.CreateBlockChain;
+import com.sofka.albertus.domain.commands.CreateBlockChain;
 import com.sofka.albertus.domain.events.BlockChainCreated;
 import com.sofka.albertus.domain.events.GenesisBlockCreated;
 import org.junit.jupiter.api.DisplayName;

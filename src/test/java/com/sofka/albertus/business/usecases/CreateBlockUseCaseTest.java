@@ -4,14 +4,14 @@ import co.com.sofka.domain.generic.DomainEvent;
 import com.sofka.albertus.application.helpers.BlockHashResponse;
 import com.sofka.albertus.business.usecases.gateways.DomainEventRepository;
 import com.sofka.albertus.business.usecases.gateways.EventBus;
-import com.sofka.albertus.business.usecases.gateways.commands.CreateBlock;
+import com.sofka.albertus.domain.commands.CreateBlock;
 import com.sofka.albertus.domain.events.ApplicationRegistered;
 import com.sofka.albertus.domain.events.BlockChainCreated;
 import com.sofka.albertus.domain.events.BlockCreated;
 import com.sofka.albertus.domain.events.GenesisBlockCreated;
-import java.time.format.DateTimeFormatter;
+
 import java.util.HashMap;
-import java.util.Map;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,7 +25,6 @@ import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 import java.time.Instant;
-import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
 class CreateBlockUseCaseTest {

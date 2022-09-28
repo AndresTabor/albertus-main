@@ -6,7 +6,7 @@ import com.sofka.albertus.application.helpers.BlockHashResponse;
 import com.sofka.albertus.business.usecases.gateways.DomainEventRepository;
 import com.sofka.albertus.business.usecases.gateways.EventBus;
 import com.sofka.albertus.domain.BlockChain;
-import com.sofka.albertus.business.usecases.gateways.commands.CreateBlock;
+import com.sofka.albertus.domain.commands.CreateBlock;
 import com.sofka.albertus.domain.events.BlockCreated;
 import com.sofka.albertus.domain.values.BlockChainId;
 import lombok.extern.slf4j.Slf4j;

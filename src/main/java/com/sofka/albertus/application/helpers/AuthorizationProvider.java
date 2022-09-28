@@ -1,16 +1,13 @@
 package com.sofka.albertus.application.helpers;
 
-import com.sofka.albertus.business.usecases.gateways.commands.CreateBlock;
+import com.sofka.albertus.domain.commands.CreateBlock;
 
 import static org.springframework.web.reactive.function.server.ServerRequest.Headers;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.server.ServerRequest;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Component

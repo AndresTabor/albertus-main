@@ -1,4 +1,4 @@
-package com.sofka.albertus.business.usecases.gateways.commands;
+package com.sofka.albertus.domain.commands;
 
 import co.com.sofka.domain.generic.Command;
 import com.fasterxml.jackson.annotation.JsonRawValue;

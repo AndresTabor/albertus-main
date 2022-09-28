@@ -4,16 +4,12 @@ package com.sofka.albertus.business.usecases;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.sofka.albertus.business.usecases.gateways.DomainEventRepository;
 import com.sofka.albertus.business.usecases.gateways.EventBus;
-import com.sofka.albertus.business.usecases.gateways.commands.UpdateApplication;
+import com.sofka.albertus.domain.commands.UpdateApplication;
 import com.sofka.albertus.domain.BlockChain;
-import com.sofka.albertus.domain.entity.Application;
 import com.sofka.albertus.domain.values.BlockChainId;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.stream.Collectors;
 
 @Component
 public class UpdateApplicationUseCase {
