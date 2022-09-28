@@ -10,6 +10,7 @@ import com.sofka.albertus.domain.commands.CreateBlock;
 import com.sofka.albertus.domain.events.BlockCreated;
 import com.sofka.albertus.domain.values.BlockChainId;
 import lombok.extern.slf4j.Slf4j;
+
 import org.slf4j.Marker;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
@@ -51,9 +52,14 @@ public class CreateBlockUseCase {
 
                     if (confirmation.size() > 0){
 
-                        var overCharge = blockChain.getBlocks().stream().filter(block ->
-                                block.value().TimeStamp().atZone(ZoneId.systemDefault()).getDayOfYear() == LocalDateTime.now().getDayOfMonth()
-                        ).collect(Collectors.toList());
+                        var overCharge = blockChain.getBlocks().stream().map(block ->{
+                                var day = block.value().TimeStamp().toString().substring(8,10);
+                                var currentDay = String.valueOf(LocalDateTime.now().getDayOfMonth());
+                                //2022-09-28
+                            return day.equals(currentDay);
+                                //return block.value().TimeStamp() == LocalDateTime.now().getDayOfMonth();
+                        }).collect(Collectors.toList());
+                        var dat = LocalDateTime.now().getDayOfMonth();
 
 
                         String previousHash = blockChain.getBlocks().get(blockChain.getBlocks().size()-1).value().hash();
@@ -63,7 +69,7 @@ public class CreateBlockUseCase {
                         Instant instant = Instant.now();
                         String timeStamp = String.valueOf(instant);
 
-                        Boolean hasOverCharge = overCharge.size() == 5 ? true :  false;
+                        Boolean hasOverCharge = overCharge.size() > 5 ? true :  false;
 
                         String hasOverChargeString = hasOverCharge.toString();
                         String dataToHash = timeStamp + nonce + data.toString() + previousHash + hasOverChargeString;
