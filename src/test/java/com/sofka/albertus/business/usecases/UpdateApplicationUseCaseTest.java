@@ -91,8 +91,14 @@ class UpdateApplicationUseCaseTest {
 
         //Assert
         StepVerifier.create(savedEvents)
-                .expectNextMatches(events ->
-                        events.size()==1 && events.get(0) instanceof ApplicationUpdated)
+                .expectNextMatches(events ->{
+                    var event = (ApplicationUpdated) events.get(0);
+                    return event.getApplicationID().equals("appID")
+                            && event.getNameApplication().equals("name changed")
+                            && event.getDescription().equals("descriptionchanged")
+                            &&events.size()==1 && events.get(0) instanceof ApplicationUpdated;
+                })
+
                 .verifyComplete();
 
         BDDMockito.verify(this.eventBusMock, BDDMockito.times(1))

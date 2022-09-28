@@ -3,9 +3,10 @@ package com.sofka.albertus.business.usecases;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.sofka.albertus.business.usecases.gateways.DomainEventRepository;
 import com.sofka.albertus.business.usecases.gateways.EventBus;
-import com.sofka.albertus.business.usecases.gateways.commands.DeleteApplication;
-import com.sofka.albertus.domain.events.*;
-import org.junit.jupiter.api.DisplayName;
+import com.sofka.albertus.business.usecases.gateways.commands.RegisterApplication;
+import com.sofka.albertus.domain.events.ApplicationRegistered;
+import com.sofka.albertus.domain.events.BlockChainCreated;
+import com.sofka.albertus.domain.events.GenesisBlockCreated;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
@@ -23,8 +24,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-class DeleteApplicationUseCaseTest {
-
+class RegisterApplicationUseCaseTest {
     @Mock
     private EventBus eventBusMock;
 
@@ -32,26 +32,24 @@ class DeleteApplicationUseCaseTest {
     private DomainEventRepository repositoryMock;
 
     @InjectMocks
-    private DeleteApplicationUseCase usecase;
+    private RegisterApplicationUseCase usecase;
 
     @Test
-    @DisplayName("DeleteApplicationUseCaseTest.")
-    void DeleteApplicationUseCaseTest() {
-
-        DeleteApplication deleteApplication = new DeleteApplication(
-                "appID"
-        );
-
-        ApplicationDeleted applicationDeleted = new ApplicationDeleted(
-                "appID"
+    void RegisterApplicationUseCase(){
+        RegisterApplication registerApplication = new RegisterApplication(
+                "appID",
+                "appName",
+                "appDescription",
+                true,
+                "appUserID"
         );
 
         ApplicationRegistered applicationRegistered = new ApplicationRegistered(
                 "appID",
-                "Prueba",
-                "soy una prueba",
+                "appName",
+                "appDescription",
                 true,
-                "101",
+                "appUserID",
                 Instant.now(),
                 Instant.now()
         );
@@ -65,24 +63,25 @@ class DeleteApplicationUseCaseTest {
                 .thenReturn(Flux.just(new BlockChainCreated(
                         "098098098",
                         "Santiago Sierra"
-                ), genesisBlockCreatedEvent, applicationRegistered));
+                ),genesisBlockCreatedEvent));
 
         BDDMockito
                 .when(this.repositoryMock.saveEvent(ArgumentMatchers.any(DomainEvent.class)))
-                .thenReturn(Mono.just(applicationDeleted));
+                .thenReturn(Mono.just(applicationRegistered));
 
-        Mono<List<DomainEvent>> savedEvents = this.usecase.apply(Mono.just(deleteApplication))
+        Mono<List<DomainEvent>> savedEvents = this.usecase.apply(Mono.just(registerApplication))
                 .collectList();
 
         StepVerifier.create(savedEvents)
-                .expectNextMatches(events -> {
-                            var event = (ApplicationDeleted) events.get(0);
-                            return event.getApplicationID().equals("appID") &&
-                                    events.size()== 1 &&
-                                    events.get(0) instanceof ApplicationDeleted;
-                        }
-                )
+                .expectNextMatches(events ->{
+                    var event = (ApplicationRegistered) events.get(0);
+                    return event.getApplicationId().equals("appID")
+                            && event.getNameApplication().equals("appName")
+                            && event.getActive().equals(true)
+                            && events.get(0) instanceof ApplicationRegistered;
+                })
                 .verifyComplete();
+
 
         BDDMockito.verify(this.eventBusMock, BDDMockito.times(1))
                 .publish(ArgumentMatchers.any(DomainEvent.class));
@@ -93,4 +92,5 @@ class DeleteApplicationUseCaseTest {
         BDDMockito.verify(this.repositoryMock, BDDMockito.times(1))
                 .findById(ArgumentMatchers.anyString());
     }
+
 }
